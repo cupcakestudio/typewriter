@@ -7,6 +7,7 @@
 let stringtoType = document.querySelector(".typewritten");
 //store textContent in input var
 let input = stringtoType.textContent.trim();
+
 let maxNumber; // hvor mange gange loop skal max køre
 let iteration = -1; //# af iteration som loop kører på
 //inform the user to click on page before typewriting
@@ -16,6 +17,7 @@ window.addEventListener("DOMContentLoaded", initLoop);
 function initLoop() {
   //remove content of class. typewritten
   stringtoType.textContent = "";
+
   //set maxNumber to be length of text
   maxNumber = input.length;
   window.addEventListener("click", loop);
@@ -39,6 +41,10 @@ function loop() {
 
       console.log(randSound);
     }
+  } else if (iteration === maxNumber) {
+    document.querySelector("#typelast").play();
+    document.querySelector("#typelast").currentTime = 0;
+    return; //to stop the playing sound
   }
   setTimeout(loop, Math.random() * 500);
 }
